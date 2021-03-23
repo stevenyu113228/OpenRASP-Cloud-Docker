@@ -22,13 +22,13 @@ services:
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         restart: unless-stopped
 
-    OpenRASP:
+    openrasp:
         depends_on:
             - mongodb
             - elasticsearch
-        image: openrasp
+        build: .
         container_name: OpenRASP
         ports:
             - 8086:8086
-        command: /rasp-cloud-2021-02-07/rasp-cloud
-        restart: on-failure
+        restart: always
+        command: "/rasp-cloud-2021-02-07/rasp-cloud"
